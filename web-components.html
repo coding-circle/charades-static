@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Scoreboard</title>
+    <meta name=viewport content="width=device-width"/>
+    <link href="global.css" rel="stylesheet"/>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div id="app" class="app">
+
+      <header class="app__header app__header--with-rule">
+
+        <button class="button-secondary">
+          <span class="button-secondary__icon">✕</span>
+          Leave Game
+        </button>
+
+      </header>
+
+      <main class="app__main">
+        <!-- <team-box players="dink,donk" teamColor="green"></team-box>
+             <team-box players="dink,donk" teamColor="red"></team-box>
+             <team-box players="dink,donk" teamColor="blue"></team-box> -->
+      </main>
+
+      <footer class='app__footer app__footer--with-rule'>
+
+        <button class="button-secondary button-secondary--min-width">
+          <span class="button-secondary__icon button-secondary__icon--actor-up">☚</span>
+          Actor Up
+        </button>
+
+      </footer>
+
+    </div>
+
+    <!-- PlayerListItem: Atom -->
+    <template id="player-list-item">
+      <style>
+      @import url('./global.css');
+      </style>
+      <li class="team-box__player" role="listItem">
+        <div class="team-box__badge team-box__badge--host all-caps all-caps--small"></div>
+        <div class="team-box__player-name all-caps"><slot></slot></div>
+        <div class="team-box__badge team-box__badge--status team-box__badge--status-actor-up all-caps all-caps--small"></div>
+        <div class="team-box__badge team-box__badge--status team-box__badge--status-on-deck all-caps all-caps--small"></div>
+      </li>
+    </template>
+
+    <!-- PlayerList: Molecule -->
+    <template id="player-list">
+      <style>
+      @import url('./global.css');
+      :host {
+        flex: 1 1 auto;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .team-box__player {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 32px;
+        margin-bottom: 6px;
+        padding: 0 6px;
+        background: var(--color__background);
+        border-radius: 2px;
+      }
+
+      .team-box__player-name {
+        margin-right: 6px;
+        color: var(--color__default);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: pre;
+      }
+
+      .team-box__badge {
+        flex-shrink: 0;
+        background: var(--color__foreground);
+        color: var(--color__background);
+      }
+
+      .team-box__badge--host {
+        position: relative;
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+        border-radius: 100%;
+      }
+
+      .team-box__badge--host:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        content: "H";
+      }
+
+      .team-box__badge--status {
+        display: flex;
+        align-items: center;
+        height: 20px;
+        line-height: 20px;
+        margin-left: auto;
+        padding: 0 6px;
+        border-radius: 2px;
+      }
+
+      .team-box__badge--status-actor-up:after {
+        content: 'Actor Up';
+      }
+
+      .team-box__badge--status-on-deck:after {
+        content: 'On Deck';
+      }
+
+      </style>
+      <ul class="team-box__player-list" role="list">
+        <slot></slot>
+      </ul>
+    </template>
+
+    <template id="team-score">
+      <style>
+      @import url('./global.css');
+      .team-box__score {
+        padding: 0 6px 0 12px;
+        text-align: center;
+      }
+
+      .team-box__score * {
+        color: var(--color__background);
+      }
+
+      .team-box__score-label {
+        display: inline-block;
+        width: 100%;
+        line-height: 32px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .team-box__score-number {
+        font-size: 2.8125em;
+        line-height: 38px;
+      }
+      </style>
+      <div class="team-box__score">
+        <span class="team-box__score-label all-caps">Score</span>
+        <span class="team-box__score-number all-caps all-caps--large"><slot></slot></span>
+      </div>
+    </template>
+
+    <!-- TeamBox: Organism -->
+    <template id="team-box">
+      <style>
+      @import url('./global.css');
+      .team-box {
+        color: var(--color__background);
+        margin-bottom: 32px;
+      }
+
+      .team-box__team-label,
+      .team-box__body {
+        background: var(--color__default);
+        border-radius: 4px;
+        color: var(--color__background);
+      }
+
+      .team-box__team-label,
+      .team-box__player-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: pre;
+      }
+
+      .team-box__header {
+        display: flex;
+      }
+
+      .team-box__team-label {
+        line-height: 24px;
+        padding: 6px 12px;
+      }
+
+      .team-box__rename-button {
+        margin-left: 4px;
+      }
+
+      .team-box__body {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        padding: 6px 6px 12px;
+        margin-top: -5px;
+      }
+      </style>
+      <div class="team-box">
+        <div class="team-box__header">
+          <div class="team-box__team-label all-caps">Funhundred</div>
+          <button class="team-box__rename-button button-secondary">Rename?</button>
+        </div><!-- .team-box__header -->
+
+        <div class="team-box__body">
+          <slot></slot>
+        </div>
+      </div>
+    </template>
+
+  </body>
+</html>
