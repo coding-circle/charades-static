@@ -115,7 +115,9 @@
 /* TeamScore */
 .team-box__score {
   padding: 0 6px 0 12px;
-  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 .team-box__score * {

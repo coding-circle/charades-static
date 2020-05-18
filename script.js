@@ -120,7 +120,7 @@ window.onload = () => {
   const players = game.players;
   const host = 'jilly';
   const actorUp = 'rosa';
-  const onDeck = 'heinrich';
+  const onDeck = 'millie';
 
   main.appendChild(h('team-box', {
     players: teams[0].players,

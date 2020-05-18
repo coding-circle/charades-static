@@ -19,10 +19,27 @@
 
       </header>
 
-      <main class="app__main">
-        <!-- <team-box players="dink,donk" teamColor="green"></team-box>
-             <team-box players="dink,donk" teamColor="red"></team-box>
-             <team-box players="dink,donk" teamColor="blue"></team-box> -->
+      <!-- <main class="app__main">
+           <team-box
+           players="dink,donk"
+           teamColor="green"
+           host="dink"
+           actorUp="dink"
+           onDeck="donk"
+           myTeam="true"
+           score="9"
+           ></team-box>
+      -->
+        <!-- <team-box
+             players="dink,donk"
+             teamColor="green"
+             host="dink"
+             actorUp="dink"
+             onDeck="donk"
+             myTeam="true"
+             score="10"
+             ></team-box>
+        -->
       </main>
 
       <footer class='app__footer app__footer--with-rule'>
@@ -129,7 +146,9 @@
       @import url('./global.css');
       .team-box__score {
         padding: 0 6px 0 12px;
-        text-align: center;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
       }
 
       .team-box__score * {
