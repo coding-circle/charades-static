@@ -110,13 +110,11 @@ const game = {
   ],
 }
 
-const colors = generateColors(game.games[0].teams.length);
-
 window.onload = () => {
 
   defineCustomElements();
 
-  const colors = generateColors(2);
+  const colors = generateColors(game.games[0].teams.length);
   const main = document.querySelector('main');
   const teams = game.games[0].teams;
   const players = game.players;
